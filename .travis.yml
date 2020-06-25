@@ -32,7 +32,6 @@ script:
   - docker pull "$IMAGE"
   - >
     docker build \
-      # --pull --cache-from "$IMAGE" \ <- TODO handle case where cache doesn't exist and re-enable
       --tag "$IMAGE" \
       --build-arg RAPIDPRO_VERSION=$VERSION \
       --build-arg RAPIDPRO_REPO=$REPO \
