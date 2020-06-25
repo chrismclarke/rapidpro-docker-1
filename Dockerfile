@@ -15,6 +15,7 @@ RUN apk update && \
 RUN echo $(npm -v)
 RUN echo $(node -v)
 
+RUN npm config set unsafe-perm true
 
 RUN npm install -g coffee-script less bower
 
