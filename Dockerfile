@@ -7,9 +7,13 @@ ENV PIP_RETRIES=120 \
     C_FORCE_ROOT=1 \
     PIP_EXTRA_INDEX_URL="https://alpine-3.wheelhouse.praekelt.org/simple"
 
+RUN echo nodejs -v 
+RUN echo npm -v
 
-RUN set -ex \
-  && apk add --no-cache nodejs=8 openssl tar
+RUN set -ex
+  
+RUN apk update && \
+    apk add --update nodejs openssl tar
   
 # TODO determine if a more recent version of Node is needed
 # TODO extract openssl and tar to their own upgrade/install line
