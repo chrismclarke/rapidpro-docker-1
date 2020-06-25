@@ -7,18 +7,17 @@ ENV PIP_RETRIES=120 \
     C_FORCE_ROOT=1 \
     PIP_EXTRA_INDEX_URL="https://alpine-3.wheelhouse.praekelt.org/simple"
 
-RUN echo nodejs -v 
-RUN echo npm -v
+RUN echo $(nodejs)
+RUN echo $(npm)
 
 RUN set -ex
   
 RUN apk update && \
-    apk add --update nodejs openssl tar
+    apk add --update nodejs npm openssl tar
   
 # TODO determine if a more recent version of Node is needed
-# TODO extract openssl and tar to their own upgrade/install line
-RUN echo nodejs -v 
-RUN echo npm -v
+RUN echo $(nodejs)
+RUN echo $(npm)
 
 RUN npm install -g coffee-script less bower
 
