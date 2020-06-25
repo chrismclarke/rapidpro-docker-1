@@ -16,6 +16,17 @@ The idea is:
   5. Push the docker image to Docker hub using credentials stored in
      Travis' secrets vault.
 
+## Pre-Requisites
+- Create a personal Github access token with `read:packages` scope (https://github.com/settings/tokens)
+- Create a docker hub account and repository for storing the image
+- Setup a travis-ci account (https://travis-ci.org/)
+- Create new travis project from Repo
+- Add travis secrets for:
+  - GITHUB_ACCESS_TOKEN (generated above)
+  - REGISTRY_USER (docker username)
+  - REGISTRY_PASS (docker password)
+- Update `.travis.yml` to reflect correct source and target rapidpro and docker repositories
+
 Running RapidPro in Docker
 --------------------------
 
