@@ -18,9 +18,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -qy -o Dpkg::Options::="--force-confold" docker-ce coreutils
 
-before_cache:
-  - docker exec --user=postgres postgresql pg_dump rapidpro > $HOME/postgresql/rapidpro.sql
-
 before_script:
   - 'curl -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -s https://api.github.com/repos/$REPO/tags | tee ./tags.json'
   - LATEST_TAG=$(cat ./tags.json | jq -r '.[0].name')
@@ -46,7 +43,8 @@ script:
   - docker pull rapidpro/rapidpro-base:v4
   - docker pull "$IMAGE"
   - >
-    docker build --pull --cache-from "$IMAGE" \
+    docker build \
+      # --pull --cache-from "$IMAGE" \ <- TODO handle case where cache doesn't exist and re-enable
       --tag "$IMAGE" \
       --build-arg RAPIDPRO_VERSION=$VERSION \
       --build-arg RAPIDPRO_REPO=$REPO \
