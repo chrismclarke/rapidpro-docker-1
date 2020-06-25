@@ -11,7 +11,7 @@ env:
     - GREP_TIMEOUT=360
     
   matrix:
-    - IMAGE="nyaruka/rapidpro" VERSION="" REPO="nyaruka/rapidpro"
+    - IMAGE="chrismclarke/rapidpro" VERSION="" REPO="nyaruka/rapidpro"
 
 # Update Docker Engine
 before_install:
