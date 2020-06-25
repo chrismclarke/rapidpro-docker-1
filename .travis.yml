@@ -29,7 +29,6 @@ install:
 script:
   # Build RapidPro and run it
   - docker pull rapidpro/rapidpro-base:v4
-  - docker pull "$IMAGE"
   - >
     docker build \
       --tag "$IMAGE" \
