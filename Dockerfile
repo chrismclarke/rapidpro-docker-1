@@ -17,7 +17,7 @@ RUN echo $(node -v)
 
 RUN npm config set unsafe-perm true
 
-RUN npm install -g coffee-script less bower
+RUN npm install -g coffeescript less
 
 WORKDIR /rapidpro
 
@@ -72,8 +72,7 @@ RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "/venv/bin/pip install setuptools==33.
     )" \
     && apk add --virtual .python-rundeps $runDeps \
     # TODO should this be in startup.sh?
-    && cd /rapidpro && npm install npm@latest && npm install && bower install --allow-root \
-    && apk del .build-deps
+    && cd /rapidpro && npm install && apk del .build-deps
 
 # Install `psql` command (needed for `manage.py dbshell` in stack/init_db.sql)
 # Install `libmagic` (needed since rapidpro v3.0.64)
