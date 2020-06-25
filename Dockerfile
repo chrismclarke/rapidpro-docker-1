@@ -9,7 +9,7 @@ ENV PIP_RETRIES=120 \
 
 
 RUN set -ex \
-  && apk add --no-cache nodejs=10 openssl tar
+  && apk add --no-cache nodejs=8 openssl tar
   
 # TODO determine if a more recent version of Node is needed
 # TODO extract openssl and tar to their own upgrade/install line
