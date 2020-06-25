@@ -7,14 +7,16 @@ ENV PIP_RETRIES=120 \
     C_FORCE_ROOT=1 \
     PIP_EXTRA_INDEX_URL="https://alpine-3.wheelhouse.praekelt.org/simple"
 
-# Update nodejs
-RUN apk add --update nodejs npm
 
+RUN set -ex \
+  && apk add --no-cache nodejs=10 openssl tar
+  
 # TODO determine if a more recent version of Node is needed
 # TODO extract openssl and tar to their own upgrade/install line
-RUN set -ex \
-  && apk add --no-cache nodejs-lts nodejs-npm openssl tar \
-  && npm install -g coffee-script less bower
+RUN echo nodejs -v 
+RUN echo npm -v
+
+RUN npm install -g coffee-script less bower
 
 WORKDIR /rapidpro
 
