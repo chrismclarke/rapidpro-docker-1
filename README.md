@@ -26,6 +26,8 @@ The idea is:
   - REGISTRY_USER (docker username)
   - REGISTRY_PASS (docker password)
 - Update `.travis.yml` to reflect correct source and target rapidpro and docker repositories
+- Run a test build by triggering manually from travis
+- Add a cron job to travis settings to automate build
 
 Running RapidPro in Docker
 --------------------------
